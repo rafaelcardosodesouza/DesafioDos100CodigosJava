@@ -1,4 +1,5 @@
 package org.example;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -13,12 +14,15 @@ public class Verificador {
             cpfArray[i] = Integer.parseInt(String.valueOf(cpfString[i]));
         }
 
-        int somaPrimeiroDigito =0;
-        int somaSegundoDigito =0;
+        int somaPrimeiroDigito = 0;
+        int somaSegundoDigito = 0;
 
+        /*
+         * VERIFICAÇÃO DO PRIMEIRO DIGITO
+         * */
 
         for (int i = 0; i < 9; i++) {
-            somaPrimeiroDigito += cpfArray[i] * (10-i);
+            somaPrimeiroDigito += cpfArray[i] * (10 - i);
         }
 
         LOGGER.log(Level.INFO, "Soma do primeiro Digito: {0}", somaPrimeiroDigito);
@@ -29,9 +33,12 @@ public class Verificador {
         }
         LOGGER.log(Level.INFO, "Primeirdo digito verificado: {0}", somaPrimeiroDigito);
 
-//---------------------
+        /*
+         * VERIFICAÇÃO DO SEGUNDO DIGITO
+         * */
+
         for (int i = 0; i < 10; i++) {
-            somaSegundoDigito +=  cpfArray[i] * (11-i);
+            somaSegundoDigito += cpfArray[i] * (11 - i);
         }
         LOGGER.log(Level.INFO, "Soma do segundo digito: {0}", somaSegundoDigito);
 
