@@ -1,0 +1,5 @@
+erro ao fazer a converção do primeiro digito  - ok
+erro ao fazer a soma do segundo digito  - ok
+erro ao fazer a converção do segundo digito - ok 
+Tratar possiveis erros - 
+Tratar entradas de dados -

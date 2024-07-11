@@ -13,36 +13,33 @@ public class Verificador {
             cpfArray[i] = Integer.parseInt(String.valueOf(cpfString[i]));
         }
 
-        LOGGER.log(Level.INFO, "Iniciando a verificação do CPF: {0}", cpfArray);
-
-        int tempPeso = 9;
         int somaPrimeiroDigito =0;
         int somaSegundoDigito =0;
+
+
         for (int i = 0; i < 9; i++) {
-            somaPrimeiroDigito += cpfArray[tempPeso] * tempPeso;
-            tempPeso--;
+            somaPrimeiroDigito += cpfArray[i] * (10-i);
         }
-        LOGGER.log(Level.INFO, "Primeiro verificador calculado sem tratamento: {0}", somaPrimeiroDigito);
+
+        LOGGER.log(Level.INFO, "Soma do primeiro Digito: {0}", somaPrimeiroDigito);
 
         somaPrimeiroDigito = 11 - (somaPrimeiroDigito % 11);
         if (somaPrimeiroDigito % 11 < 2) {
             somaPrimeiroDigito = 0;
         }
+        LOGGER.log(Level.INFO, "Primeirdo digito verificado: {0}", somaPrimeiroDigito);
 
-        tempPeso = 10;
+//---------------------
         for (int i = 0; i < 10; i++) {
-            somaSegundoDigito += tempPeso * cpfArray[tempPeso];
-            tempPeso--;
+            somaSegundoDigito +=  cpfArray[i] * (11-i);
         }
-        LOGGER.log(Level.INFO, "Primeiro dígito verificador calculado: {0}", somaSegundoDigito);
+        LOGGER.log(Level.INFO, "Soma do segundo digito: {0}", somaSegundoDigito);
 
         somaSegundoDigito = 11 - (somaSegundoDigito % 11);
-        LOGGER.log(Level.INFO, "Segundo verificador calculado sem tratamento: {0}", somaSegundoDigito);
-
-        if (somaSegundoDigito % 11 < 2) {
+        /*if (somaSegundoDigito % 11 < 2) {
             somaSegundoDigito = 0;
-        }
-        LOGGER.log(Level.INFO, "Primeiro segundo verificador calculado: {0}", somaSegundoDigito);
+        }*/
+        LOGGER.log(Level.INFO, "Segundo digito verificado: {0}", somaSegundoDigito);
 
         return cpfArray[9] == somaPrimeiroDigito && cpfArray[10] == somaSegundoDigito;
 
